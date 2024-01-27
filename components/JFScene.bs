@@ -1,6 +1,14 @@
 import "pkg:/source/utils/misc.bs"
 
 sub init()
+    ' This will show a warning when not running tests, but that's the cost of progress...
+    ' The component will be injected by the test run when calling `device.deploy()`.
+    ' bs:disable-next-line
+    odc = CreateObject("roSGNode", "RTA_OnDeviceComponent")
+    if odc <> invalid
+        m.odc = odc
+    end if
+
     m.top.backgroundColor = "#262626" '"#101010"
     m.top.backgroundURI = ""
     m.spinner = m.top.findNode("spinner")

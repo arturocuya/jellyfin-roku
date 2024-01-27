@@ -42,7 +42,8 @@
     "lint-spelling": "spellchecker -d dictionary.txt --files \"**/*.md\" \"**/.*/**/*.md\" \"!node_modules/**/*.md\"",
     "postinstall": "npm run ropm",
     "ropm": "ropm copy && node scripts/ropm-hook.cjs",
-    "validate": "npx bsc --copy-to-staging=false --create-package=false"
+    "validate": "npx bsc --copy-to-staging=false --create-package=false",
+    "ui-tests": "npm run build && mocha './ui-tests/**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -57,5 +58,8 @@
   "bugs": {
     "url": "https://github.com/jellyfin/jellyfin-roku/issues"
   },
-  "homepage": "https://github.com/jellyfin/jellyfin-roku"
+  "homepage": "https://github.com/jellyfin/jellyfin-roku",
+  "mocha": {
+    "timeout": 72000
+  }
 }

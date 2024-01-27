@@ -1,0 +1,12 @@
+{
+    "$schema": "https://raw.githubusercontent.com/triwav/roku-test-automation/master/client/rta-config.schema.json",
+    "extends": "./ui-tests/rta-config.base.json",
+    "RokuDevice": {
+        "devices": [
+            {
+                "host": "your-roku-ip",
+                "password": "your-roku-password"
+            }
+        ]
+    }
+}

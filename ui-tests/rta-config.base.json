@@ -1,0 +1,10 @@
+{
+    "ECP": {
+        "default": {
+            "launchChannelId": "dev"
+        }
+    },
+    "OnDeviceComponent": {
+        "logLevel": "info"
+    }
+}
