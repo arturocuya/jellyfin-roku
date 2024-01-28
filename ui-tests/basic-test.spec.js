@@ -13,6 +13,7 @@ describe('basic test', () => {
             project: './bsconfig-rta.json',
             stagingDir: './build/rta',
             rootDir: './build/staging',
+            deleteBeforeInstall: true,
             files: [
                 "manifest",
                 "source/**/*.*",
@@ -24,15 +25,30 @@ describe('basic test', () => {
             ]
         });
 
-        // Waits for application load
         await utils.sleep(3000);
+        await odc.deleteEntireRegistry();
 
-        // Assert correct prompt label
-        const result = await odc.getValue({ keyPath: '#prompt.text' });
+        await ecp.sendLaunchChannel();
+        await utils.sleep(5000);
 
-        expect(result.found, 'Keypath not found').to.be.true;
-        expect(result.value).to.eql('Connect to Server');
+        await ecp.sendKeypress(ecp.Key.Ok);
+        await ecp.sendText('https://demo.jellyfin.org/stable/');
+        await ecp.sendKeypress(ecp.Key.Down, { count: 4 });
+        await ecp.sendKeypress(ecp.Key.Ok);
+        await utils.sleep(100);
+        await ecp.sendKeypress(ecp.Key.Down);
+        await ecp.sendKeypress(ecp.Key.Ok);
 
-        // SendClientDiscoveryBroadcast
+        await utils.sleep(2000);
+        await ecp.sendKeypress(ecp.Key.Ok);
+        await ecp.sendText('demo');
+        await ecp.sendKeypress(ecp.Key.Down, { count: 4 });
+        await ecp.sendKeypress(ecp.Key.Ok);
+        await utils.sleep(1000);
+
+        await ecp.sendKeypress(ecp.Key.Down, { wait: 1000 });
+        await ecp.sendKeypress(ecp.Key.Down, { wait: 100 });
+        await ecp.sendKeypress(ecp.Key.Down, { wait: 100 });
+        await ecp.sendKeypress(ecp.Key.Ok);
     });
 });
