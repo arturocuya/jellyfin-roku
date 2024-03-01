@@ -13,16 +13,7 @@ describe('basic test', () => {
             project: './bsconfig-rta.json',
             stagingDir: './build/rta',
             rootDir: './build/staging',
-            deleteBeforeInstall: true,
-            files: [
-                "manifest",
-                "source/**/*.*",
-                "components/**/*.*",
-                "images/**/*.*",
-                "resources/**/*.*",
-                "locale/**/*.*",
-                "settings/*.*"
-            ]
+            deleteBeforeInstall: true
         });
 
         await utils.sleep(3000);
